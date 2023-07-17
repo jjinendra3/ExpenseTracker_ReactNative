@@ -58,7 +58,23 @@ const ExpenseState = ({ children }) => {
     },
   ];
   const [expenses, setexpenses] = useState(arr);
-  const adder = () => {};
+  const [ider, setider] = useState(10);
+  const adder = (desc, amount) => {
+    let date = new Date();
+    let datestr = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()}`;
+    setexpenses([
+      ...expenses,
+      {
+        desc: desc,
+        amount: amount,
+        id: ider,
+        date: datestr,
+      },
+    ]);
+    setider(ider + 1);
+  };
   const remover = (index) => {
     let arr = [];
     for (let i = 0; i < expenses.length; i++) {
@@ -68,8 +84,22 @@ const ExpenseState = ({ children }) => {
     }
     setexpenses(arr);
   };
+  const updater = (desc, amount, index, date) => {
+    let arr = [...expenses];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].id === index) {
+        arr[i] = {
+          desc: desc,
+          amount: amount,
+          id: index,
+          date: date,
+        };
+      }
+    }
+    setexpenses(arr);
+  };
   return (
-    <ExpenseContext.Provider value={{ expenses, adder, remover }}>
+    <ExpenseContext.Provider value={{ expenses, adder, remover, updater }}>
       {children}
     </ExpenseContext.Provider>
   );

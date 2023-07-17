@@ -6,6 +6,7 @@ const ExpenseList = (props) => {
   return (
     <View style={{ padding: 5, marginBottom: 150 }}>
       <FlatList
+        inverted={true}
         data={props.expense}
         renderItem={(element) => {
           return (
