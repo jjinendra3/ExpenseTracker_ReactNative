@@ -1,19 +1,35 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, Text, FlatList, StyleSheet, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 const ExpenseList = (props) => {
+  const navigation = useNavigation();
   return (
     <View style={{ padding: 5, marginBottom: 150 }}>
       <FlatList
         data={props.expense}
         renderItem={(element) => {
           return (
-            <View key={element.index} style={styles.items}>
-              <View style={styles.info}>
-                <Text style={styles.desc}>{element.item.desc}</Text>
-                <Text style={styles.date}>{element.item.date}</Text>
+            <Pressable
+              key={element.index}
+              style={({ pressed }) => pressed && styles.pressed}
+              onPress={() => {
+                navigation.navigate("ManageExpense", {
+                  desc: element.item.desc,
+                  date: element.item.date,
+                  amount: element.item.amount,
+                  index: element.item.id,
+                  id: 0,
+                });
+              }}
+            >
+              <View style={styles.items}>
+                <View style={styles.info}>
+                  <Text style={styles.desc}>{element.item.desc}</Text>
+                  <Text style={styles.date}>{element.item.date}</Text>
+                </View>
+                <Text style={styles.amount}>₹{element.item.amount}</Text>
               </View>
-              <Text style={styles.amount}>₹{element.item.amount}</Text>
-            </View>
+            </Pressable>
           );
         }}
       />
@@ -32,6 +48,8 @@ const styles = StyleSheet.create({
     margin: 10,
     alignItems: "center",
     flexDirection: "row",
+    elevation: 2,
+    overflow: "hidden",
   },
   desc: {
     fontSize: 16,
@@ -49,5 +67,8 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "white",
     borderRadius: 5,
+  },
+  pressed: {
+    opacity: 0.75,
   },
 });

@@ -1,10 +1,12 @@
 import { View } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import ExpenseList from "../components/ExpenseList";
 import ExpenseSummary from "../components/ExpenseSummary";
-const RecentExpense = ({ route }) => {
+import ExpenseContext from "../ContextAPI";
+const RecentExpense = () => {
+  const expenseContext = useContext(ExpenseContext);
   let sum = 0;
-  const { DUMMY } = route.params;
+  const DUMMY = expenseContext.expenses;
   var datenoww = new Date();
   var datenow = new Date();
   var dateback = new Date(datenow.setDate(datenow.getDate() - 7));

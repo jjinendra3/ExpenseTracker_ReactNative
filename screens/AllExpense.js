@@ -1,10 +1,12 @@
 import { View } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import ExpenseList from "../components/ExpenseList";
 import ExpenseSummary from "../components/ExpenseSummary";
-const AllExpense = ({ route }) => {
+import ExpenseContext from "../ContextAPI";
+const AllExpense = () => {
   let sum = 0;
-  const { DUMMY } = route.params;
+  const expenseContext = useContext(ExpenseContext);
+  const DUMMY = expenseContext.expenses;
   for (let i = 0; i < DUMMY.length; i++) {
     sum += DUMMY[i].amount;
   }
