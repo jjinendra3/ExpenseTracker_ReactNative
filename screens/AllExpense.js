@@ -1,11 +1,14 @@
 import { View } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ExpenseList from "../components/ExpenseList";
 import ExpenseSummary from "../components/ExpenseSummary";
 import ExpenseContext from "../ContextAPI";
-const AllExpense = () => {
-  let sum = 0;
+const AllExpense = ({ navigation }) => {
   const expenseContext = useContext(ExpenseContext);
+  useEffect(() => {
+    expenseContext.setter();
+  }, [navigation]);
+  let sum = 0;
   const DUMMY = expenseContext.expenses;
   for (let i = 0; i < DUMMY.length; i++) {
     sum += DUMMY[i].amount;

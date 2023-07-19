@@ -1,10 +1,14 @@
 import { View } from "react-native";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ExpenseList from "../components/ExpenseList";
 import ExpenseSummary from "../components/ExpenseSummary";
 import ExpenseContext from "../ContextAPI";
-const RecentExpense = () => {
+
+const RecentExpense = ({ navigation }) => {
   const expenseContext = useContext(ExpenseContext);
+  useEffect(() => {
+    expenseContext.setter();
+  }, [navigation]);
   let sum = 0;
   const DUMMY = expenseContext.expenses;
   var datenoww = new Date();

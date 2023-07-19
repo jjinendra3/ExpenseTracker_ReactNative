@@ -3,6 +3,7 @@ import React, { useEffect, useContext, useState } from "react";
 import ExpenseContext from "../ContextAPI";
 import { Text } from "react-native";
 import { Alert } from "react-native";
+import { AddExpense } from "../backend-setup";
 const ManageExpense = ({ route, navigation }) => {
   const expenseContext = useContext(ExpenseContext);
   const { desc, amount, id, index, date } = route.params;
@@ -58,7 +59,11 @@ const ManageExpense = ({ route, navigation }) => {
                     );
                     return;
                   }
-                  expenseContext.adder(desca, num);
+                  let date = new Date();
+                  let datestr = `${date.getFullYear()}-${
+                    date.getMonth() + 1
+                  }-${date.getDate()}`;
+                  expenseContext.adder(desca, num, datestr);
                   setdesc("");
                   setamo("");
                   navigation.goBack();
