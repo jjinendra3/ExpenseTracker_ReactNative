@@ -1,4 +1,4 @@
-  <h3 align="center">Expense Tracker Lister</h3>
+  <h3 align="center">Expense Tracker</h3>
 
   <p align="center">
     An awesome app to track your recent and all expenses at one go. 
