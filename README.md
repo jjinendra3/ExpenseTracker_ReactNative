@@ -1,7 +1,7 @@
   <h3 align="center">Expense Tracker Lister</h3>
 
   <p align="center">
-    An awesome app to track your recent and all expensesin one go. 
+    An awesome app to track your recent and all expenses at one go. 
     <br />
   </p>
 </div>
@@ -103,6 +103,6 @@ Don't forget to give the project a star! Thanks again!
 
 Your Name - [@jjinendra3](https://linkedin.com/jjinendra3) - jjinendra3@gmail.com
 
-Project Link: [https://github.com/your_username_/ExpenseTracker_ReactNative](hhttps://github.com/your_username_/ExpenseTracker_ReactNative)
+Project Link: [https://github.com/jjinendra3/ExpenseTracker_ReactNative](hhttps://github.com/jjinendra3/ExpenseTracker_ReactNative)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
